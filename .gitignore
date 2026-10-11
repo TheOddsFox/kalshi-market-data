@@ -218,3 +218,11 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Operator state and private evidence
+/data/
+.state/
+*.duckdb
+*.duckdb.wal
+*.parquet
+*.jsonl
