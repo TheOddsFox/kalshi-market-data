@@ -286,12 +286,9 @@ def workflow(events, data, python, work, env):
     run_events("replay", "--capture-id", capture["capture_id"])
     replayed_catalogue = run_events("publish")
     assert replayed_catalogue["source_release_id"] == catalogue["source_release_id"]
-    backup = work / "backup"
-    run_events("backup", "--output", backup)
-    restored = work / "restored-events"
-    command(events, ["--root", restored, "restore", "--backup", backup], cwd=work, env=env)
-    restored_catalogue = command(events, ["--root", restored, "current"], cwd=work, env=env)
-    assert restored_catalogue["source_release_id"] == catalogue["source_release_id"]
+    run_events("rebuild")
+    rebuilt = run_events("current")
+    assert rebuilt["source_release_id"] == catalogue["source_release_id"]
     run_events(
         "metadata", "export", "--market-ticker", LIVE, "--market-ticker", OLD, "--output", bundle
     )
