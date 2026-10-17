@@ -131,7 +131,7 @@ environment and run the synthetic exchange harness outside both checkouts:
 ```
 
 The harness verifies catalogue publication, metadata compatibility, all feeds,
-exact decimals, replay, backup/restore, persistent refresh and consumption after
+exact decimals, replay, rebuild, persistent refresh and consumption after
 the producer becomes unavailable. The consumer environment must contain no
 producer package.
 
